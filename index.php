@@ -2,5 +2,6 @@
 
 $firstName = 'christian';
 $lastName = 'fernandez';
+$age = 24;
 
-echo "Bienvenido $firstName $lastName";
+echo "Bienvenido $firstName $lastName $age;
