@@ -6,11 +6,13 @@ class Person{
 	protected $nickname;
 	protected $changednickname = 0;
 	protected $characternickname;
+	protected $fechaNacimiento;
 	public $age;
 
 	public function __construct($firstName, $lastName){
 		$this->firstName = $firstName;
 		$this->lastName = $lastName;
+		$this->fechaNacimiento = $fechaNacimiento;
 		$this->age = $age;
 	}
 
@@ -46,6 +48,16 @@ class Person{
 		$this->changednickname++;
 	}
 
+	public function setAge()
+	{
+		
+	}
+
+	public function getAge()
+	{
+		return $this->fechaNacimiento;
+	}
+
 	public function getNickname()
 	{
 		return $this->nickname;
@@ -59,6 +71,8 @@ class Person{
 $person1 = new Person('Christian', 'Fernandez', '24');
 
 $person1->setNickname('malo');
+
+$perso1->
 
 exit($person1->getNickname();
 
