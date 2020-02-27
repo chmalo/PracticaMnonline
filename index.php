@@ -4,4 +4,6 @@ $firstName = 'christian';
 $lastName = 'fernandez';
 $age = 24;
 
-echo "Bienvenido $firstName $lastName $age;
+$fullName = $firstName . $lastName;
+
+echo "Bienvenido $fullName $age; 
