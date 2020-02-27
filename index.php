@@ -1,9 +1,16 @@
 <?php
 
-$firstName = 'christian';
-$lastName = 'fernandez';
+$firstName = 'Christian';
+$lastName = 'Fernandez';
 $age = 24;
 
-$fullName = $firstName . $lastName;
+$fullName = $firstName .' '. $lastName;
 
-echo "Bienvenido $fullName $age; 
+
+$firstName2 = 'Jose';
+$lastName2 = 'Fernandez';
+
+$fullName2 = $firstName2 .' '. $lastName2;
+
+
+echo "$fullName es amigo de $fullName2"; 
