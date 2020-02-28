@@ -5,16 +5,16 @@ namespace Chmalo;
 
 require '../vendor/autoload.php';
 
-$armadura = new armaduras\ArmaduraBronce();
 
-$malo = new Arquero('Malo');
+$malo = new Arquero('Malo' new armas\Ballesta;
 
-$christian = new Soldado('Christian');
-//$christian->move('el norte');
+$malo->setArmadura(new armaduras\ArmaduraBronce());
+
+$christian = new Soldado('Christian', new armas\EspadaBasica);
 
 $christian->attack($malo);
 
-$christian->setArmadura(new armaduras\ArmaduraPlata);
+$malo->setArmadura(new armaduras\ArmaduraPlata());
 
 $christian->attack($malo);
 

@@ -2,14 +2,12 @@
 
 namespace Chmalo;
 
+use Chmalo\armas\Arco;
+
 class Arquero extends Unit
 {
-	protected $daño = 30;
-
-	public function attack(Unit $opponent) 
-	{ 
-		show("{$this->name} dispara una flecha a {$opponent->getName()}");
-
-		$opponent->takeDamage($this->daño);
-	}	
+	public function __construct($name, Arco $arco)
+	{
+		parent::__construct($name, $arco);
+	} 
 }

@@ -2,35 +2,12 @@
 
 namespace Chmalo;
 
+use Chmalo\armas\Espada;
 
 class Soldado extends Unit
-{
-
-	protected $daño = 20;
-	protected $armadura;
-
-	public function __construct($name)
+{	
+	public function __construct($name, Espada $espada)
 	{
-		parent::__construct($name);
-	}
-
-	public function attack(Unit $opponent)
-	{ 
-		show("{$this->name} ataca con la espada a {$opponent-getName()}");
-
-		$opponent->takeDamage($this->daño);
-	}	
-
-	public function setArmadura($armadura = null)
-	{
-		$this->armadura = $armadura;   
-	}
-
-	protected function absorberDaño($daño)
-	{
-		if ($this->armadura)
-		{
-			$daño = $this->armadura->absorberDaño($daño);
-		}
-	}
+		parent::__construct($name, $espada);
+	} 
 }
