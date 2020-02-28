@@ -1,6 +1,6 @@
 <?php
 
-namespace Warcraft;
+namespace Chmalo;
 
 interface Armadura
 {

@@ -2,7 +2,6 @@
 
 namespace Chmalo;
 
-use Warcraft/Armadura as WarcraftArmadura;
 
 class Soldado extends Unit
 {
@@ -22,7 +21,7 @@ class Soldado extends Unit
 		$opponent->takeDamage($this->daño);
 	}	
 
-	public function setArmadura(WarcraftArmadura $armadura = null)
+	public function setArmadura($armadura = null)
 	{
 		$this->armadura = $armadura;   
 	}
