@@ -12,7 +12,7 @@ $malo->setArmadura(new armaduras\ArmaduraBronce());
 
 $christian = new Unit('Christian', new armas\EspadaBasica);
 
-$christian->setArmadura(new armaduras\ArmaduraPlata());
+$christian->setArmadura(new armaduras\ArmaduraMagica());
 
 $christian->attack($malo);
 

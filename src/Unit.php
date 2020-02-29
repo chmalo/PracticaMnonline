@@ -8,7 +8,7 @@ class Unit
 {
 	protected $hp = 40;
 	protected $name;
-	protected $arma
+	protected $arma;
 	protected $armadura;
 
 	public function __construct($name, Arma $arma)
@@ -59,8 +59,7 @@ class Unit
 		
 		show("{$this->name} ahora tiene {$this->hp} puntos de vida"); 
 
-		if ($this->hp <= 0)
-		{
+		if ($this->hp <= 0){
 			$this->die(); 
 		}
 		
