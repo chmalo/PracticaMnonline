@@ -6,11 +6,13 @@ namespace Chmalo;
 require '../vendor/autoload.php';
 
 
-$malo = new Arquero('Malo' new armas\Ballesta;
+$malo = new Unit('Malo' new armas\ArcoFuego;
 
 $malo->setArmadura(new armaduras\ArmaduraBronce());
 
-$christian = new Soldado('Christian', new armas\EspadaBasica);
+$christian = new Unit('Christian', new armas\EspadaBasica);
+
+$christian->setArmadura(new armaduras\ArmaduraPlata());
 
 $christian->attack($malo);
 
@@ -18,4 +20,4 @@ $malo->setArmadura(new armaduras\ArmaduraPlata());
 
 $christian->attack($malo);
 
-$malo->attack($christian);
+$malo->attack($christian); 

@@ -5,11 +5,12 @@ namespace Chmalo;
 abstract class Arma 
 {
 	protected $daño = 0;
+	protected $magico = false;
+	protected $description = ':unit ataca a :opponent';
 
-	public function getDaño()
+	public function createAttack()
 	{
-		return $this->daño;
+		return new Attack($this->daño, $this->magico, $this->description);
 	}
 
-	abstract public function getDescription(Unit $attack, Unit $opponent);
 }

@@ -4,5 +4,5 @@ namespace Chmalo;
 
 interface Armadura
 {
-	public function absorberDaño($daño);
+	public function absorberDaño(Attack $attack);
 }

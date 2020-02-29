@@ -2,7 +2,7 @@
 
 namespace Chmalo;
 
-abstract class Unit
+class Unit
 {
 	protected $hp = 40;
 	protected $name;
@@ -43,20 +43,22 @@ abstract class Unit
 
 	public function attack(Unit $opponent)
 	{ 
-		show($this->arma->getDescription($this, $opponent));
+		$attack = $this->arma->createAttack();
 
-		$opponent->takeDamage($this->arma->getDaño();
+		show($attack->getDescription($this, $opponent));
+
+		$opponent->takeDamage($attack);
 	}
 
-	public function takeDamage($daño) 
+	public function takeDamage(Attack $attack) 
 	{	
-		$this->hp = $this->hp - $this->absorberDaño($daño);
+		$this->hp = $this->hp - $this->absorberDaño($attack);
 
 		show("{$this->name} ahora tiene {$this->hp} puntos de vida"); 
 
 		if ($this->hp <= 0)
 		{
-			$this->die();
+			$this->die(); 
 		}
 		
 	}
@@ -68,16 +70,13 @@ abstract class Unit
 		exit();
 	}
 
-	protected function absorberDaño($daño)
-	{
-		return $daño;
-	}
-
-		protected function absorberDaño($daño)
+	protected function absorberDaño(Attack $attack)
 	{
 		if ($this->armadura)
 		{
-			$daño = $this->armadura->absorberDaño($daño);
+			return $this->armadura->absorberDaño($attack);
 		}
+
+		return $attack->getDaño();
 	}
 }

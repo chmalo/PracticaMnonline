@@ -3,11 +3,16 @@
 namespace Chmalo\Armaduras;
 
 use Chmalo\Armadura;
+use Chmalo\Attack;
 
 class ArmaduraOro implements Armadura
 {
-	public function absorberDaño($daño)
+	public function absorberDaño(Attack $attack)
 	{
-		return $daño / 4;
+		if ($attack->isFisico()){
+			return $attack->getDaño() / 4;
+		}
+
+		return	$attack->getDaño();	
 	}
 }
