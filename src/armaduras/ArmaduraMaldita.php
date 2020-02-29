@@ -5,14 +5,16 @@ namespace Chmalo\Armaduras;
 use Chmalo\Armadura;
 use Chmalo\Attack;
 
-class ArmaduraMaldita implements Armadura
+class ArmaduraMaldita extends Armadura
 {
-	public function absorberDaño(Attack $attack)
+	public function absorberDañoFisico(Attack $attack)
 	{
-		if ($attack->isFisico()){
-			return $attack->getDaño() * 2;
-		}
+		return $attack->getDaño() * 2;
+	}
 
+	public function absorberDañoMagico(Attack $attack)
+	{
 		return $attack->getDaño() * 4;
 	}
+	
 }

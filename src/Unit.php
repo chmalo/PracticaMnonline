@@ -2,6 +2,8 @@
 
 namespace Chmalo;
 
+use Chmalo\armaduras\MissingArmadura;
+
 class Unit
 {
 	protected $hp = 40;
@@ -13,6 +15,7 @@ class Unit
 	{
 		$this->name = $name;
 		$this->arma = $arma;
+		$this->armadura = new MissingArmadura();
 	}
 
 	public funtion setArma(Arma $arma)
@@ -52,8 +55,8 @@ class Unit
 
 	public function takeDamage(Attack $attack) 
 	{	
-		$this->hp = $this->hp - $this->absorberDaño($attack);
-
+		$this->hp = $this->hp - $this->armadura->absorberDaño($attack);
+		
 		show("{$this->name} ahora tiene {$this->hp} puntos de vida"); 
 
 		if ($this->hp <= 0)
@@ -70,13 +73,4 @@ class Unit
 		exit();
 	}
 
-	protected function absorberDaño(Attack $attack)
-	{
-		if ($this->armadura)
-		{
-			return $this->armadura->absorberDaño($attack);
-		}
-
-		return $attack->getDaño();
-	}
 }

@@ -5,14 +5,10 @@ namespace Chmalo\Armaduras;
 use Chmalo\Armadura;
 use Chmalo\Attack;
 
-class ArmaduraPlata implements Armadura
+class ArmaduraPlata extends Armadura
 {
-	public function absorberDaño(Attack $attack)
+	public function absorberDañoFisico(Attack $attack)
 	{
-		if ($attack->isFisico()){
-			return $attack->getDaño() / 3;
-		}
-
-		return	$attack->getDaño();	
+		return $attack->getDaño() / 3;	
 	}
 }
