@@ -1,0 +1,19 @@
+{
+    "name": "chmalo/oop",
+    "description": "Proyecto para el curso de programacion orientada a objetos",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "christian",
+            "email": "chmalo.f@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "files": ["src/helpers.php"],
+        "psr-4":{
+            "Chmalo\\":"src/"
+        }
+    }
+}
