@@ -6,6 +6,8 @@ use Chmalo\armaduras\MissingArmadura;
 
 class Unit
 {
+	const static::MAX_DAÑO = 100;
+
 	protected $hp = 40;
 	protected $name;
 	protected $arma;
@@ -80,7 +82,9 @@ class Unit
 
 	public function takeDamage(Attack $attack) 
 	{	
-		$this->hp = $this->hp - $this->armadura->absorberDaño($attack);
+		$this->setHp(
+			$this->armadura->absorberDaño($attack)		
+		);
 		
 		Log::info("{$this->name} ahora tiene {$this->hp} puntos de vida"); 
 
@@ -88,6 +92,15 @@ class Unit
 			$this->die(); 
 		}
 		
+	}
+
+	protected function setHp($daño)
+	{
+		if ($daño > static::MAX_DAÑO){
+			$daño = static::MAX_DAÑO;
+		}
+
+		$this->hp = $this->hp - $daño;
 	}
 
 	public function die()
