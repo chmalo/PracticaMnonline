@@ -5,6 +5,13 @@ namespace Chmalo;
 
 require '../vendor/autoload.php';
 
+Traductor::set([
+	'ArcoBasicoAttack' => ':unit dispara una flecha a :opponent',
+	'ArcoFuegoAttack' => ':unit dispara una flecha de fuego a :opponent',
+	'BallestaAttack' => ':unit dispara una flecha a :opponent',
+	'EspadaBasicaAttack' => ':unit ataca con la espada a :opponent',
+]);
+
 
 $malo = new Unit('Malo' new armas\ArcoFuego;
 

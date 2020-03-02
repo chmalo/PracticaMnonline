@@ -6,11 +6,15 @@ abstract class Arma
 {
 	protected $daño = 0;
 	protected $magico = false;
-	protected $description = ':unit ataca a :opponent';
 
 	public function createAttack()
 	{
-		return new Attack($this->daño, $this->magico, $this->description);
+		return new Attack($this->daño, $this->magico, $this->getDescriptionKey());
+	}
+
+	protected function getDescriptionKey()
+	{
+		return str_replace('Chmalo\armas\\', '', get_class($this)).'Attack';
 	}
 
 }

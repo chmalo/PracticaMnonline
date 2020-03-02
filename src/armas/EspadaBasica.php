@@ -8,5 +8,4 @@ use Chmalo\Unit;
 class EspadaBasica extends Arma 
 {
 	protected $daño = 40;
-	protected $description = ':unit ataca con la espada a :opponent';
 }
