@@ -12,17 +12,17 @@ Traductor::set([
 	'EspadaBasicaAttack' => ':unit ataca con la espada a :opponent',
 ]);
 
+Log::setLogger(new HtmlLogger());
 
-$malo = new Unit('Malo' new armas\ArcoFuego;
+$malo = Unit::crearArquero()
+			->setArma(new armas\ArcoFuego());
 
-$malo->setArmadura(new armaduras\ArmaduraBronce());
-
-$christian = new Unit('Christian', new armas\EspadaBasica);
-
-$christian->setArmadura(new armaduras\ArmaduraMagica());
+$christian = Unit::crearSoldado()
+				->setArmadura(new armaduras\ArmaduraMagica())
+				->setEscudo();
 
 $christian->attack($malo);
-
+ 
 $malo->setArmadura(new armaduras\ArmaduraPlata());
 
 $christian->attack($malo);
