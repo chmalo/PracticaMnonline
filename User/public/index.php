@@ -4,6 +4,7 @@ use Chmalo\User;
 
 require '../vendor/autoload.php';
 
+/*
 $user = new User();
 
 $user->fill([
@@ -20,3 +21,12 @@ echo "<p>Bienvenido {$user->first_name} {$user->last_name}</p>";
 if (isset($user->nickname)){
 	echo "<p>Bienvenido {$user->nickname}</p>";
 }
+*/
+
+$node = HtmlNode::texarea('Chmalo')
+	->name('content'); 
+
+var_dump($node('name'), $node('width', 100))
+
+echo $node;
+
