@@ -4,9 +4,23 @@ namespace Chmalo;
 
 class User extends Model
 {
-	public function getFirstNameAttributes($value)
+	public $table = 'users';
+	private $dbPassword = 'secret';
+
+	public function __toString()
 	{
-		return strtoupper($value);
+		return $this->name;
+	}
+
+	public function __sleep()
+	{
+		return ['attributes', 'table'];
+	}
+
+	public function __wakeup()
+	{
+		$this->attributes['name'] = strtoupper($this->attributes['name']);
+
 	}
 }
  

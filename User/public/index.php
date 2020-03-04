@@ -2,7 +2,14 @@
 
 use Chmalo\User;
 
+
 require '../vendor/autoload.php';
+
+$user = new User(['name' => 'Christian']);
+
+$result = serialize($user);
+
+file_put_contents('../storage/user.txt', $result); 
 
 /*
 $user = new User();
@@ -10,7 +17,7 @@ $user = new User();
 $user->fill([
 	'first_name' => 'Chirstian',
 	'last_name' => 'Fernandez',
-]);
+]);  
 
 $user->nickname = 'Malo';
 
@@ -23,10 +30,5 @@ if (isset($user->nickname)){
 }
 */
 
-$node = HtmlNode::texarea('Chmalo')
-	->name('content'); 
 
-var_dump($node('name'), $node('width', 100))
-
-echo $node;
 
