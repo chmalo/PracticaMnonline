@@ -27,6 +27,8 @@ class Time
 
 $today = new Time();
 
+$today2 = new Time();  
+
 echo "<p>Hoy es {$today}</p>";  
 
 $tomorrow = $today->tomorrow();
