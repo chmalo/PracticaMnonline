@@ -1,6 +1,7 @@
 <?php 
 
 use Chmalo\User;
+use Chmalo\Comida;
 use Chmalo\Lonchera;
 
 
@@ -15,17 +16,22 @@ $maria = new User(['name' => 'Maria']);
 $ana = new User(['name' => 'Ana']);
 
 //casa...
-$lonchera = new Lonchera(['sandwich', 'manzana']);
-$lonchera2 = clone($lonchera);
+$lonchera = new Lonchera(['Sandwich', 'Manzana', 'Papas', 'Jugo de naranja']);
+
+$lonchera = new Lonchera([
+	new Comida(['name' => 'Sandwich', 'bebida' => false]),
+	new Comida(['name' => 'Manzana']),
+	new Comida(['name' => 'Papas']),
+	new Comida(['name' => 'Jugo de naranja', 'bebida' => true]),
+	new Comida(['name' => 'Agua', 'bebida' => true])
+]);
+
 
 $maria->setAlmuerzo($lonchera);
 
-$ana->setAlmuerzo($lonchera2);
-
 //escuela...
-$maria->eat();
 
-$ana->eat();
+$maria->eatMeal();
 
 
 

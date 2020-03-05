@@ -45,5 +45,29 @@ class User extends Model
 		$this->attributes['name'] = strtoupper($this->attributes['name']);
 
 	}
+
+	public function eatMeal()
+	{
+		$comida = $this->almuerzo->filter(function ($comida){
+			return ! $comida->bebida;
+		});
+
+		$bebida = $this->almuerzo->filter(function ($bebida){
+			return $comida->bebida;
+		})
+
+		echo "<p>{$this->name} tiene {$this->almuerzo->count()} alimentos</p>";
+
+		echo "<p>{$this->name} tiene {$bebida->count()} bebidas</p>";
+
+
+		foreach ($comida as $item) {
+			echo "<p>{$this->name} come {$item->name}</p>";
+		}
+
+		foreach ($bebida as $item) {
+			echo "<p>{$this->name} toma {$item->name}</p>";
+		}
+	}
 }
  

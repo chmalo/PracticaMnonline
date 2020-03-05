@@ -2,7 +2,7 @@
 
 namespace Chmalo;
 
-class Lonchera 
+class Lonchera implements \IteratorAggregate, \Countable
 {
 	protected $comida = [];
 	protected $original = true;
@@ -10,6 +10,16 @@ class Lonchera
 	public function __construct(array $comida = [])
 	{
 		$this->comida = $comida;
+	}
+
+	public function all()
+	{
+		return $this->comida; 
+	}
+
+	public function filter($callback)
+	{
+		return new static(array_filter($this->comida, $callback));
 	}
 
 	public function __clone()
@@ -26,4 +36,14 @@ class Lonchera
 	{
 		return empty($this->comida);
 	}
-} 
+
+	public function getIterator()
+	{
+		return new \ArrayIterator($this->comida);
+	}
+
+	public function count()
+	{
+		return count($this->comida);
+	}
+}
