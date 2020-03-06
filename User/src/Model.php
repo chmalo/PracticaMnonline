@@ -35,12 +35,12 @@ abstract class Model
 
 	protected function hasGetMutate($name)
 	{
-		return method_exists($this, 'get'.str::studly($name).'attribute');
+		return method_exists($this, 'get'.Str::studly($name).'attribute');
 	}
 
 	protected function mutateAttribute($name, $value)
 	{
-		return $this->{'get'.str::studly($name).'attribute'}($value)
+		return $this->{'get'.Str::studly($name).'attribute'}($value)
 	}
 
 	public function getAttributeValue($name)
