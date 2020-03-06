@@ -2,6 +2,9 @@
  
 namespace Chmalo;
 
+use Exception;
+use Carbon\Carbon;
+
 class User extends Model
 {
 	public $table = 'users';
@@ -14,6 +17,13 @@ class User extends Model
 		parent::__construct($attributes);
 
 		$this->almuerzo = new Lonchera();
+	}
+
+	public function getAgeAttribute()
+	{
+		$date = Carbon::createFromFormat('d/m/Y', $this->FechaDeNacimiento);
+
+		return $date->age;
 	}
 
 	public function setAlmuerzo($almuerzo)
