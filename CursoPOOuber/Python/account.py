@@ -5,3 +5,6 @@ class Account:
     email     = str
     password  = str
     
+    def __init__(self, name, cedula):
+        self.name  = name
+        self.cedula = cedula
