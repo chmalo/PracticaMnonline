@@ -2,7 +2,7 @@
 
 class Payment 
 {
-    protected id;
+    protected $id;
 }
 
 ?>
