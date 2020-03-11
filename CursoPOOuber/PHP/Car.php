@@ -1,6 +1,8 @@
 <?php
 
-    class Car {
+use Account;
+
+    class Car extends Account{
         protected $licencia;
         protected $driver;
         protected $pasajeros;
@@ -9,14 +11,6 @@
         {
             $this->licencia = $licencia;
             $this->driver = $driver;
-        }
-
-        public function getLicense(){
-           return $this->licencia;
-        }
-
-        public function getDriver(){
-            return $this->driver;
         }
     }
 

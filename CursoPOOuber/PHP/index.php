@@ -1,7 +1,5 @@
 <?php
 
-$car = new Car("DGR123", "Christian Fernandez");
-$car->getLicense();
-$car->getDriver();
+$car = new Car("DGR123", new Account("christian fernandez", "C-224"));
 
 ?>
