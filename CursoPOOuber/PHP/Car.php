@@ -1,8 +1,8 @@
 <?php
 
-use Account;
+require_once ("Account.php");
 
-    class Car extends Account{
+    class Car {
         protected $licencia;
         protected $driver;
         protected $pasajeros;
