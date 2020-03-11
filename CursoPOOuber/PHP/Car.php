@@ -3,9 +3,10 @@
 require_once ("Account.php");
 
     class Car {
-        protected $licencia;
-        protected $driver;
-        protected $pasajeros;
+        public $id;
+        public $licencia;
+        public $driver;
+        public $pasajeros;
 
         public function __construct($licencia, $driver)
         {
@@ -14,8 +15,7 @@ require_once ("Account.php");
         }
 
         public function printDataCar(){
-            echo "licencia: ".$this->licencia;
-            echo "driver: ".$this->driver;
+            echo "licencia: $this->licencia, driver: ".$this->driver->name;
 
         }
     }

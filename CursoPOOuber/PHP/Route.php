@@ -1,9 +1,9 @@
 <?php
 
     class Route {
-        protected $id;
-        protected $start = [];
-        protected $end = [];
+        public $id;
+        public $init = array();
+        public $end = array();
     }
 
 ?>

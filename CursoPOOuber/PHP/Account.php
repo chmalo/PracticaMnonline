@@ -2,11 +2,11 @@
 
 class Account {
 
-    protected $id;
-    protected $name;
-    protected $cedula;
-    protected $email;
-    protected $passwordpassword;
+    public $id;
+    public $name;
+    public $cedula;
+    public $email;
+    public $password;
 
     public function __construct($name, $cedula)
     {
