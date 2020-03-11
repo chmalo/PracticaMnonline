@@ -12,6 +12,12 @@ use Account;
             $this->licencia = $licencia;
             $this->driver = $driver;
         }
+
+        public function printDataCar(){
+            echo "licencia: ".$this->licencia;
+            echo "driver: ".$this->driver;
+
+        }
     }
 
 ?>
