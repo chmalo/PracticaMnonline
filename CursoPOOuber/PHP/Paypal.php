@@ -12,4 +12,4 @@ class Paypal extends Payment {
     }
 }
 
-?>
+?> 
