@@ -1,6 +1,6 @@
 <?php
 
-require_once ("Account.php");
+require_once ("Driver.php");
 
     class Car {
         public $id;
@@ -15,7 +15,7 @@ require_once ("Account.php");
         }
 
         public function printDataCar(){
-            echo "licencia: $this->licencia, driver: ".$this->driver->name;
+            echo "Licencia: $this->licencia, Driver: ".$this->driver->name," ", $this->driver->cedula, " ", "Marca: $this->marca, Modelo: $this->modelo ";
 
         }
     }
