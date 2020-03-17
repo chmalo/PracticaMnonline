@@ -3,24 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Practica Vue</title>
 </head>
 <body>
     <div id="app">
-        <img v-bind:src="img" v-bind:alt="name">
-        <h1>
+        <img 
+        v-on:mouseover="toggleShowPrices" 
+        v-on:mouseOut="toggleShowPrices"
+        v-bind:src="img" v-bind:alt="name">
+        <h1 v-bind:class="changePercent > 0 ? 'green' : 'red'">
             {{ name }}
             <span v-if="changePercent > 0"> :) </span>
             <span v-else-if="changePercent < 0"> :( </span>
             <span v-else> :| </span>
 
-            <span v-show="changePercent > 0"> :) </span>
-            <span v-show="changePercent < 0"> :( </span>
-            <span v-show="changePercent == 0"> :| </span>
+             <span v-on:click="toggleShowPrices">
+                 {{ showPrices ? 'Precios' : 'Ver precios' }}
+                </span>
         </h1>
+
+       
+
+        <ul v-show="showPrices">
+            <li 
+            class="uppercase"
+            v-bind:class="{ orange: p.valor == price, red: p.valor < price, green: p.valor > price }"
+            v-for="(p, i) in pricesWithDays" 
+            v-bind:key="p.day">
+                {{ i }} - {{ p.day }} - {{ p.valor }}
+            </li>
+        </ul>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="app.js"></script>
+    <script src="styles.css"></script>
 </body>
 </html>
