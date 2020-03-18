@@ -7,34 +7,20 @@
 </head>
 <body>
     <div id="app" v-bind:style="{ background: '#' + color }">
-        <img 
-        v-on:mouseover="toggleShowPrices" 
-        v-on:mouseOut="toggleShowPrices"
-        v-bind:src="img" v-bind:alt="name">
-        <h1 v-bind:class="changePercent > 0 ? 'green' : 'red'">
-            {{ title }}
-            <span v-if="changePercent > 0"> :) </span>
-            <span v-else-if="changePercent < 0"> :( </span>
-            <span v-else> :| </span>
-                
-             <span v-on:click="toggleShowPrices">
-                 {{ showPrices ? 'Precios' : 'Ver precios' }}
-                </span>
-        </h1>
 
-       <input type="number" v-model="value">
-       <br>
-       <span>{{ convertedValue }}</span>
+        <coin-detail 
+            v-on:change-color="updateColor" 
+            v-bind:coin="btc">
+            <template v-slot:text>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                dummy text ever since the 1500s</p>
+            </template>
+            <template v-slot:link>
+                <a href="#">Link!</a>
+            </template>
+           
+        </coin-detail>
 
-        <ul v-show="showPrices">
-            <li 
-            class="uppercase"
-            v-bind:class="{ orange: p.valor == price, red: p.valor < price, green: p.valor > price }"
-            v-for="(p, i) in pricesWithDays" 
-            v-bind:key="p.day">
-                {{ i }} - {{ p.day }} - {{ p.valor }}
-            </li>
-        </ul>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
