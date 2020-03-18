@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica Styde</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  
+</head>
+<body>
+    <div id="app" class="container">
+        <!--requiered-->
+        <div>
+           <h4>¿Has trabajado con Vue.js?</h4>
+           <div class="radio">
+               <label class="radio-inline">
+                   <input type="radio" value="1"> Sí
+               </label>
+               <label class="radio-inline">
+                   <input type="radio" value="0"> No
+               </label>
+           </div>
+        </div>
+
+        <!--si la respuesta es sí-->
+        <div class="form-group">
+            <br>
+            <label for="vue_years">¿Cuantos años de experiencia tienes con Vue? <br>
+            </label>
+            <input type="number" class="form-control">
+        </div>
+
+        <!--si tienes un año de experiencia o menos-->
+         <div class="form-group">
+             <br>
+             <label for="vue_years">¿Que te motivo a aprender Vue? <br>
+            </label>
+             <textarea class="form-control" rows="4"></textarea>
+         </div>
+
+         <!--si ha trabajado dos años o más-->
+           <div class="form-group">
+               <br>
+               <label for="vue_years">¿Cuentanos tu experiencia con Vue.js? <br>
+               </label>
+               <textarea class="form-control" rows="4"></textarea>
+           </div>
+
+        <footer class="footer"> 
+            <p>&copy; Chmalo.net.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                
+            }
+        });
+    </script>
+    
+</body>
+</html>
