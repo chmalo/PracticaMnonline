@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="style.css">
   
 </head>
 <body>
@@ -29,24 +30,23 @@
         <template v-if="vue.exp">
             <!--si la respuesta es sí-->
             <div class="form-group">
-                <br>
-                <label for="vue_years">¿Cuantos años de experiencia tienes con Vue? <br>
+                <label for="vue_years">¿Cuantos años de experiencia tienes con Vue?
                 </label>
                 <input type="number" v-model="vue.years" class="form-control">
             </div>
 
             <!--si tienes un año de experiencia o menos-->
-            <div v-if="vue.years < 2" class="form-group">
-                <br>
-                <label for="vue_years">¿Que te motivo a aprender Vue? <br>
+            <div v-if="vue.years < 2" 
+            :class="descriptionFieldClasses">
+                <label class="control-label">¿Que te motivo a aprender Vue? 
                 </label>
                 <textarea v-model="vue.description" class="form-control" rows="4"></textarea>
+                <p v-if="descripcionError != ''" class="help-block">{{ descripcionError }}</p>
             </div>
 
             <!--si ha trabajado dos años o más-->
             <div v-else="vue.years >= 2" class="form-group">
-                <br>
-                <label for="vue_years">¿Cuentanos tu experiencia con Vue.js? <br>
+                <label for="vue_years">¿Cuentanos tu experiencia con Vue.js?
                 </label>
                 <textarea v-model="vue.description" class="form-control" rows="4"></textarea>
             </div>
@@ -68,6 +68,28 @@
                     exp: null,
                     years: 0,
                     description: ''
+                }
+            },
+
+            computed: {
+                descripcionError: function () {
+                    var val = this.vue.description.trim();
+
+                    if (val == ''){
+                        return 'El campo es obligatorio';
+                    }
+
+                    if (val.length < 5){
+                        return 'Por favor escribe una descripcion mayor a 5 caracteres';
+                    }
+
+                    if (val.length > 20){
+                        return 'Por favor escribe una descripcion menor a 20 caracteres';
+                    }
+                },
+
+                descriptionFieldClasses: function () {
+                    return  ['form-group', {'has-error': this.descripcionError }];
                 }
             }
         });

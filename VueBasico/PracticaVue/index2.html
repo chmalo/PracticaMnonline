@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 2 Styde</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" class="container">
+        <h2>Todas las tareas</h2>
+        <ul>
+            <li v-for="(task, index) in tasks">
+                {{ index + 1 }}: {{ task.title }}
+            </li>
+        </ul>
+        <h2 v-if="pendingTasks.length">Tareas pendientes</h2>
+         <ul v-if="pendingTasks.length">
+            <li v-for="(task, index) in pendingTasks">
+                {{ index + 1 }}: {{ task.title }}
+            </li>
+        </ul>
+
+         <footer class="footer"> 
+            <p>&copy; Chmalo.net.</p>
+        </footer>
+    </div>
+
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+     <script>
+          var vm = new Vue({
+            el: '#app',
+            data: {
+                tasks: [
+                    {
+                        title : 'Aprender Vue.js',
+                        pending: false
+                    },
+                    {
+                        title : 'Mejorar el lenguaje',
+                        pending: false
+                    },
+                    {
+                        title :  'Nunca parar de aprender',
+                        pending: true
+                    }
+                ]   
+            },
+
+            computed: {
+                pendingTasks: function () {
+                    return this.tasks.filter(function (item) {
+                        return item.pending;                        
+                    });
+                }
+            }
+         });
+     </script>
+</body>
+</html>
