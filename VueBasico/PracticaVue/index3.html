@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
+    
+    <title>Curso de vue</title>
+
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div id="app" class="container">
+        <h2>Tareas</h2>
+
+        <ul class="list-group tasks">
+            <li class="list-group-item">
+                <a href="#"><span class="glyphicon glyphicon-unchecked"
+                    aria-hidden="true"></span></a>
+
+                <span class="description">Aprender Vue.js</span>
+
+                <div>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-edit"
+                              aria-hidden="true"></span>
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-trash"
+                              aria-hidden="true"></span>
+                    </a>
+                </div>
+            </li>
+            <li class="list-group-item editing">
+                 <a href="#">
+                     <span class="glyphicon glyphicon-unchecked"
+                           aria-hidden="true"></span></a>
+                
+                <input type="text" value="Mejorar el lenguaje">
+
+                <div>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-ok"
+                              aria-hidden="true"></span>
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-remove"
+                              aria-hidden="true"></span>
+                    </a>
+                </div>
+            </li>
+            <li class="list-group-item completed">
+                <a href="#">
+                     <span class="glyphicon glyphicon-check"
+                           aria-hidden="true"></span></a>
+                
+                <span class="description">Crear una API</span> 
+
+                <div>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-edit"
+                              aria-hidden="true"></span>
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-trash"
+                              aria-hidden="true"></span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+
+        <form class="new-task-form">
+            <br>
+            <input type="text" class="form-control">
+            <button class="btn btn-primary">Crear tarea</button>
+        </form>
+
+         <footer class="footer"> 
+             <br>
+            <p>&copy; Chmalo.net.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <script>
+        var vm = new Vue({
+            el: '#app'
+        });
+    </script>
+</body>
+</html>
