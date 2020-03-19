@@ -12,6 +12,12 @@
 </head>
 <body>
     <div id="app" class="container">
+
+        <div class="welcome">
+            Bienvenido {{ name | upper | title('Mr') }}
+        </div>
+
+
         <h2>Todas las tareas</h2>
         <ul>
             <li v-for="(task, index) in tasks">
@@ -25,7 +31,19 @@
             </li>
         </ul>
 
+        <form>
+            <input type="text" v-model="new_task" class="form-control">
+        <button class="btn btn-primary" @click="createTask(true, $event)">
+            Crear tarea pendiente
+        </button>
+        <button class="btn btn-info" @click="createTask(false, $event)">
+            Crear tarea completada
+        </button>
+        </form>
+       
+
          <footer class="footer"> 
+             <br>
             <p>&copy; Chmalo.net.</p>
         </footer>
     </div>
@@ -33,9 +51,15 @@
      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     
      <script>
-          var vm = new Vue({
+         Vue.filter('title', function (value, title) {
+             return title + '. ' + value;
+         });
+
+         var vm = new Vue({
             el: '#app',
             data: {
+                name: 'Christian',
+                new_task: '',
                 tasks: [
                     {
                         title : 'Aprender Vue.js',
@@ -44,12 +68,18 @@
                     {
                         title : 'Mejorar el lenguaje',
                         pending: false
-                    },
+                    },  
                     {
                         title :  'Nunca parar de aprender',
                         pending: true
                     }
                 ]   
+            },
+
+            filters: {
+                upper: function (value) {
+                    return value.toUpperCase();
+                },   
             },
 
             computed: {
@@ -58,7 +88,20 @@
                         return item.pending;                        
                     });
                 }
-            }
+            },
+
+            methods: {
+                createTask: function (pending, event){
+                    event.preventDefault();
+
+                    this.tasks.push({
+                        title: this.new_task,
+                        pending: pending
+                    });
+
+                    this.new_task = '';
+                }
+            },
          });
      </script>
 </body>
