@@ -1,3 +1,5 @@
+var EventBus = new Vue;
+
 Vue.component('app-icon',{
     template: '<span :class="cssClases" aria-hidden="true"></span>',
     props: ['img'],
@@ -10,8 +12,23 @@ Vue.component('app-icon',{
 });
 
 Vue.component('app-task', {
+    data: function () {
+        return {
+            editing: false,
+            draft: ''
+        };
+    },
     template: '#task-template',
-    props: ['tasks', 'task', 'index'],
+    props: ['task', 'index'],
+
+    created: function () {
+        EventBus.$on('editing', function (index) {
+            if(this.index != index) {
+                console.log('Discarding: ' + this.index);
+                this.discard();
+            }
+        }.bind(this));
+    },
 
     methods: {
         toggleStatus: function () {
@@ -19,27 +36,31 @@ Vue.component('app-task', {
         },
 
         edit: function () {
+            console.log('editing' + this.index);
+            
+            EventBus.$emit('editing', this.index);
+            /*
             this.tasks.forEach(function () {
                 task.editing = false;
-            });
+            }); */
 
             this.draft = this.task.description;
 
-            this.task.editing = true;
+            this.editing = true;
         },
 
         discard: function () {
-            this.task.editing = false;
+            this.editing = false;
         },
 
         update: function (ask) {
             this.task.description = this.draft;
 
-            this.task.editing = false;
+            this.editing = false;
         },
 
         remove: function () {
-            this.tasks.splice(this.index, 1);
+            this.$emit('remove', this.index);
         },
     }
 });
@@ -48,22 +69,18 @@ var vm = new Vue({
     el: '#app',
     data: {
         new_task: '',
-        draft: '',
         tasks:[
             {
                 description: 'Aprender Vue.js',
-                pending: true,
-                editing: false
+                pending: true
             },
             {
                 description: 'Mejorar el lenguaje',
-                pending: true,
-                editing: false
+                pending: true
             },
             {
                 description: 'Crear una API',
-                pending: false,
-                editing: false
+                pending: false
             }
         ]
     }, 
@@ -79,11 +96,21 @@ var vm = new Vue({
             this.new_task = '';
         },
 
+        deleteTask: function (index) {
+            this.tasks.splice(index, 1);
+        },
+
         deleteCompleted: function () {
             this.tasks = this.tasks.filter(function (task) {
                 return task.pending;
             });
         }
-    }
-                
+    },
+
+    /*
+    created: function () {
+        this.tasks.forEach(function (task) {
+            this.$set(task, 'editing', false)
+        }.bind(this));  
+    } */     
 });
