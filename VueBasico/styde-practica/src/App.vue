@@ -1,60 +1,136 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
-  </div>
+<div id="app" class="container">
+        <h2>Tareas</h2>
+
+        <ul class="list-group tasks">
+           <li is="app-task" v-for="(task, index) in tasks"
+           :tasks="tasks" :task="task" :index="index" @remove="deleteTask"></li>
+        </ul>
+
+        <br>
+        <p><a @click="deleteCompleted">Eliminar tareas completadas</a></p>
+
+        <form @submit.prevent="createTask" class="new-task-form">
+            <br>
+            <input v-model="new_task" type="text" class="form-control">
+            <button class="btn btn-primary">Crear tarea</button>
+        </form>
+
+         <footer class="footer">
+             <br>
+            <p>&copy; Chmalo.net.</p>
+        </footer>
+    </div>
+
 </template>
 
 <script>
 export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Curso de Vue.js'
-    }
-  }
+    el: '#app',
+    data: function () {
+      return {
+          new_task: '',
+          tasks:[
+            {
+                description: 'Aprender Vue.js',
+                pending: true
+            },
+            {
+                description: 'Mejorar el lenguaje',
+                pending: true
+            },
+            {
+                description: 'Crear una API',
+                pending: false
+            }
+        ]
+      }
+    },
+
+    methods: {
+        createTask: function(){
+            this.tasks.push({
+                description: this.new_task,
+                pending: true,
+                editing: false
+            });
+
+            this.new_task = '';
+        },
+
+        deleteTask: function (index) {
+            this.tasks.splice(index, 1);
+        },
+
+        deleteCompleted: function () {
+            this.tasks = this.tasks.filter(function (task) {
+                return task.pending;
+            });
+        }
+    },
+
+    /*
+    created: function () {
+        this.tasks.forEach(function (task) {
+            this.$set(task, 'editing', false)
+        }.bind(this));
+    } */
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+#app body {
+  margin: 10px;
 }
-
-h1, h2 {
-  font-weight: normal;
+.container {
+  max-width: 650px;
 }
-
-ul {
-  list-style-type: none;
-  padding: 0;
+.container h2 {
+  margin-bottom: 20px;
 }
-
-li {
-  display: inline-block;
-  margin: 0 10px;
+.tasks {
+  margin-bottom: 40px;
 }
-
-a {
-  color: #42b983;
+.tasks a {
+  text-decoration: none;
+}
+.tasks li {
+  display: flex;
+  justify-content: space-between;
+}
+.tasks li.editing {
+  box-shadow: inset 0 0 5px #999;
+}
+.tasks output,
+.tasks .description {
+  flex: none;
+  padding: 0 5px;
+}
+.tasks input {
+  border: 0;
+}
+.tasks input:focus {
+  outline: none;
+}
+.completed .description {
+  text-decoration: line-through;
+}
+.completed,
+.completed a {
+  color: #999;
+}
+.new-task-form {
+  display: flex;
+}
+.new-task-form input {
+  margin-right: 10px;
+}
+.container footer {
+  margin: 40px 0;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+  color: #999;
 }
 </style>
+
+
