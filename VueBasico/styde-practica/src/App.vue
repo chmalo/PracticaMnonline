@@ -2,22 +2,23 @@
 <div id="app" class="container">
         <h2>Tareas</h2>
 
-        <ul class="list-group tasks">
-           <li is="app-task" v-for="(task, index) in tasks"
-           :tasks="tasks" :task="task" :index="index" @remove="deleteTask"></li>
-        </ul>
+        <app-task-list :tasks="tasks"></app-task-list>
 
-        <br>
+        <app-task-list :tasks="tasks2"></app-task-list>
+
+
         <p><a @click="deleteCompleted">Eliminar tareas completadas</a></p>
 
-        <form @submit.prevent="createTask" class="new-task-form">
-            <br>
-            <input v-model="new_task" type="text" class="form-control">
-            <button class="btn btn-primary">Crear tarea</button>
-        </form>
+        <h4>Crear:</h4>
+
+        <app-task-form @created="createTask"></app-task-form>
+
+        <h4>Imprimir:</h4>
+
+        <app-task-form @created="alertTask"></app-task-form>
+
 
          <footer class="footer">
-             <br>
             <p>&copy; Chmalo.net.</p>
         </footer>
     </div>
@@ -25,9 +26,12 @@
 </template>
 
 <script>
+
+import TaskList from './TaskList.vue';
+import TaskForm from './TaskForm.vue';
+
 export default {
-    el: '#app',
-    data: function () {
+    data() {
       return {
           new_task: '',
           tasks:[
@@ -43,38 +47,50 @@ export default {
                 description: 'Crear una API',
                 pending: false
             }
+        ],
+            tasks2:[
+            {
+                description: 'Aprender laravel',
+                pending: true
+            },
+            {
+                description: 'Aprender Java Script',
+                pending: true
+            }
         ]
       }
     },
 
+    components: {
+      'app-task-list': TaskList,
+      'app-task-form': TaskForm
+    },
+
     methods: {
-        createTask: function(){
-            this.tasks.push({
-                description: this.new_task,
-                pending: true,
-                editing: false
-            });
-
-            this.new_task = '';
+        createTask(task){
+          this.tasks.push(task);
         },
 
-        deleteTask: function (index) {
-            this.tasks.splice(index, 1);
+        alertTask(task){
+          alert(task.description);
         },
 
-        deleteCompleted: function () {
-            this.tasks = this.tasks.filter(function (task) {
+        deleteCompleted() {
+          this.tasks = this.tasks.filter(task => task.pending);
+
+          /*  this.tasks = this.tasks.filter(function (task) {
                 return task.pending;
-            });
+            });*/
         }
     },
 
-    /*
-    created: function () {
-        this.tasks.forEach(function (task) {
-            this.$set(task, 'editing', false)
-        }.bind(this));
-    } */
+    created() {
+        this.tasks.forEach((task, index) => this.$set(task, 'id', index +1));
+
+      /*  this.tasks.forEach(function (task, index) {
+            this.$set(task, 'id', index +1);
+        }.bind(this)); */
+    }
 }
 </script>
 
@@ -101,11 +117,7 @@ export default {
 .tasks li.editing {
   box-shadow: inset 0 0 5px #999;
 }
-.tasks output,
-.tasks .description {
-  flex: none;
-  padding: 0 5px;
-}
+
 .tasks input {
   border: 0;
 }
