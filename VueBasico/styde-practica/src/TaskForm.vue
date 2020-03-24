@@ -27,3 +27,13 @@ export default {
   },
 }
 </script>
+
+<style>
+  .new-task-form {
+    display: flex;
+  }
+
+  .new-task-form input {
+    margin-right: 10px;
+  }
+</style>
