@@ -31,3 +31,9 @@ export default {
     margin-bottom: 40px;
   }
 </style>
+
+<style module>
+ .subtitle {
+    color: blue;
+  }
+</style>

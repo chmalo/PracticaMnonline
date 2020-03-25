@@ -1,6 +1,6 @@
 <template>
 <div id="app" class="container">
-        <h2>Tareas</h2>
+        <h2 class="subtitle">Tareas</h2>
 
         <app-task-list :tasks="tasks"></app-task-list>
 
@@ -9,7 +9,7 @@
 
         <p><a @click="deleteCompleted">Eliminar tareas completadas</a></p>
 
-        <h4>Crear:</h4>
+        <h2 >Crear:</h2>
 
         <app-task-form @created="createTask"></app-task-form>
 
@@ -95,6 +95,7 @@ export default {
 </script>
 
 <style>
+
   body {
     margin: 10px;
   }
