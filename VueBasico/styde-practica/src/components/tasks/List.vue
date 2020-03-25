@@ -8,7 +8,7 @@
 
 
 <script>
-import Task from './Task.vue';
+import Task from './ListItems.vue';
 
 export default {
   props: ['tasks'],
@@ -29,5 +29,11 @@ export default {
 <style>
  .tasks-list {
     margin-bottom: 40px;
+  }
+</style>
+
+<style module>
+ .subtitle {
+    color: blue;
   }
 </style>
