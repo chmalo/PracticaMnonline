@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import store from './../../router/index.js';
 import TaskList from './List.vue';
 import TaskForm from './CreateForm.vue';
 
@@ -25,26 +26,13 @@ export default {
   data() {
       return {
           new_task: '',
-          tasks:[
-            {
-                description: 'Aprender Vue.js',
-                pending: true
-            },
-            {
-                description: 'Mejorar el lenguaje',
-                pending: true
-            },
-            {
-                description: 'Crear una API',
-                pending: false
-            }
-        ]
+          tasks: store.state.tasks
       }
     },
 
     components: {
       'task-list': TaskList,
-      'task-form': TaskForm
+      'task-form': TaskForm,
     },
 
     methods: {
@@ -64,13 +52,5 @@ export default {
             });*/
         }
     },
-
-    created() {
-        this.tasks.forEach((task, index) => this.$set(task, 'id', index +1));
-
-      /*  this.tasks.forEach(function (task, index) {
-            this.$set(task, 'id', index +1);
-        }.bind(this)); */
-    }
 }
 </script>

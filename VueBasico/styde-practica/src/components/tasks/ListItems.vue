@@ -7,7 +7,7 @@
              <app-icon :img="task.pending ? 'unc hecked' : 'check'" aria-hidden="true"></app-icon>
           </a>
 
-         <span class="description">{{ task.description }}</span>
+         <span class="description">{{ task.title }}</span>
   </li>
 
 </template>

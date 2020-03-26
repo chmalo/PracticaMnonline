@@ -6,6 +6,18 @@ import App from './components/App.vue'
 
 window.EventBus = EventBus
 
+window.not_fount = function () {
+  console.log('NOT FOUNT:' + router.currentRoute.fullPath);
+
+  router.replace('/404');
+};
+
+window.not_fount_unless = function (condition) {
+    if (! condition) {
+      not_fount();
+    }
+}
+
 var vm = new Vue({
   el: '#app',
   router,
