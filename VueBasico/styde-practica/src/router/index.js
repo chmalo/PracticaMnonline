@@ -15,12 +15,14 @@ var router = new Router({
     },
     {
       path: '/tasks',
-      component: Tasks
-    },
-    {
-      path: '/tasks/:id',
-      component: TaskDetails,
-      props: true
+      component: Tasks,
+      children: [
+        {
+          path: ':id',
+          component: TaskDetails,
+          props: true
+        }
+      ]
     },
     {
       path: '/404',
